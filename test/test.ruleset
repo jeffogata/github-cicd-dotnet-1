@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Test Projects Rule Set" Description=" " ToolsVersion="16.0">
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+	  <!-- SA0001 All diagnostics of XML documentation comments has been disabled due to the current project configuration. -->
+    <Rule Id="SA0001" Action="None" />
+	  <!-- SA1600 A C# code element is missing a documentation header. -->
+    <Rule Id="SA1600" Action="None" />
+	  <!-- SA1633 A C# code file is missing a standard file header. -->
+    <Rule Id="SA1633" Action="None" />
+  </Rules>
+</RuleSet>

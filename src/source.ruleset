@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Test Projects Rule Set" Description=" " ToolsVersion="16.0">
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+	  <!-- SA1101 - A call to an instance member of the local class or a base class is not prefixed with 'this.', within a C# code file. -->
+    <Rule Id="SA1101" Action="None" />
+  </Rules>
+</RuleSet>
