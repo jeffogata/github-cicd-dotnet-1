@@ -25,17 +25,34 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    # see https://github.com/coverlet-coverage/coverlet/blob/master/Documentation/MSBuildIntegration.md
+
+    # See https://github.com/coverlet-coverage/coverlet/blob/master/Documentation/MSBuildIntegration.md
     # for documentation on coverlet properties, including a note on the use of '%2c' for commas in a 
-    # comma separated list in powershell (see the CoverletOutputFormat property below).
+    # comma separated list in powershell
+
+    # Run tests and produce a merged coverlet json results file
     - name: Test
       run: dotnet test -m:1 --no-build --verbosity normal 
         /p:CollectCoverage=true 
         /p:CoverletOutput=../../.coverage/
         /p:MergeWith=../../.coverage/coverage.json
-        /p:CoverletOutputFormat="lcov%2cjson"
-        /p:Threshold=40
-    - name: Publish coverage report to coveralls.io
+
+    # We can't set a threshold with the previous step because coverlet reports on each test project 
+    # as it's being tested and includes 0% coverage for every other test project in the solution that 
+    # hasn't been run yet.  The threshold is checked for each test project and those 0's fail the build.
+    
+    # Instead, we run coverlet once more, excluding all tests and set a threshold now that we have results
+    # for all test projects.  We also output the final merged results to lcov format for coveralls.io
+    - name: Check coverage threshold and convert to lcov for coveralls
+      run: dotnet test --no-build --verbosity minimal --list-tests 
+        /p:CollectCoverage=true 
+        /p:CoverletOutput=../../.coverage/
+        /p:MergeWith=../../.coverage/coverage.json
+        /p:CoverletOutputFormat="lcov"
+        /p:Exclude="[*]*"
+        /p:Threshold=50
+
+    - name: Publish coverage to coveralls.io
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
