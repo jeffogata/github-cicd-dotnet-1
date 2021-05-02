@@ -352,5 +352,6 @@ MigrationBackup/
 # VS Code
 .vscode/
 
-# Coverage Results
+# Coverlet Results
 .coverage/
+coverage.json

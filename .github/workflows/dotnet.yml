@@ -25,12 +25,16 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+    # see https://github.com/coverlet-coverage/coverlet/blob/master/Documentation/MSBuildIntegration.md
+    # for documentation on coverlet properties, including a note on the use of '%2c' for commas in a 
+    # comma separated list in powershell (see the CoverletOutputFormat property below).
     - name: Test
       run: dotnet test -m:1 --no-build --verbosity normal 
         /p:CollectCoverage=true 
         /p:CoverletOutput=../../.coverage/
         /p:MergeWith=../../.coverage/coverage.json
-        --% /p:CoverletOutputFormat=\"lcov,json\"
+        /p:CoverletOutputFormat="lcov%2cjson"
+        /p:Threshold=50
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
