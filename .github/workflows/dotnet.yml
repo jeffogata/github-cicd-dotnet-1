@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main ]
 
+defaults:
+  run:
+    shell: pwsh
+
 jobs:
   build:
 
@@ -22,4 +26,13 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test -m:1 --no-build --verbosity normal 
+        /p:CollectCoverage=true 
+        /p:CoverletOutput=../../.coverage/
+        /p:MergeWith=../../.coverage/coverage.json
+        --% /p:CoverletOutputFormat=\"lcov,json\"
+    - name: Publish coverage report to coveralls.io
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: .coverage/coverage.info

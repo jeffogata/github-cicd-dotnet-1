@@ -17,6 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Tests", "test\Core.Tes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{419507D3-E0BD-4951-87AD-D97BB0139370}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
 		README.md = README.md
 	EndProjectSection
@@ -31,6 +32,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D87ECFB2-DD9
 	ProjectSection(SolutionItems) = preProject
 		src\Directory.Build.props = src\Directory.Build.props
 		src\source.ruleset = src\source.ruleset
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{1A9CCABF-D944-4F97-A053-8CD9B333C627}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{79398DF3-D396-4E9C-809C-6A50FB0064D3}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 	EndProjectSection
 EndProject
 Global
@@ -66,6 +74,8 @@ Global
 		{AFEA6A9E-28AE-47CA-9A39-856813047BFA} = {811953DA-767E-469F-B16A-51E049B006F7}
 		{16B7C155-4E56-41F6-B7DC-1E6E57737415} = {419507D3-E0BD-4951-87AD-D97BB0139370}
 		{D87ECFB2-DD99-43A9-A5A3-58ED6423D479} = {419507D3-E0BD-4951-87AD-D97BB0139370}
+		{1A9CCABF-D944-4F97-A053-8CD9B333C627} = {419507D3-E0BD-4951-87AD-D97BB0139370}
+		{79398DF3-D396-4E9C-809C-6A50FB0064D3} = {1A9CCABF-D944-4F97-A053-8CD9B333C627}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3C97D110-BAB6-4D7B-BFC1-343CBC86B90D}
