@@ -27,7 +27,7 @@ namespace Core
         /// <returns>The factorial.</returns>
         public static int CalculateFactorial(int input)
         {
-            return input * (input - 1);
+            return input * CalculateFactorial(input - 1);
         }
 
         /// <summary>
