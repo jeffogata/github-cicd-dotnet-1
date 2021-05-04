@@ -21,6 +21,16 @@ namespace Core
         internal int LastResult => lastResult;
 
         /// <summary>
+        /// Intentionally infinite recursion.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns>The factorial.</returns>
+        public static int CalculateFactorial(int input)
+        {
+            return input * CalculateFactorial(input - 1);
+        }
+
+        /// <summary>
         /// Adds two integers and returns the sum.
         /// </summary>
         /// <param name="num1">The first integer to add.</param>
