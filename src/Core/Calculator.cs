@@ -49,5 +49,20 @@ namespace Core
 
             return difference;
         }
+
+        /// <summary>
+        /// Multiplies two integers and returns the difference.
+        /// </summary>
+        /// <param name="num1">The first integer to multiply.</param>
+        /// <param name="num2">The second integer to multiply.</param>
+        /// <returns>The product.</returns>
+        public int Muliply(int num1, int num2)
+        {
+            var product = num1 - num2;
+
+            lastResult = product;
+
+            return product;
+        }
     }
 }
